@@ -1,6 +1,6 @@
 $( "#go" ).click(function() {
     var word = $('#word').val().replace(/\s+/g,'-').toLowerCase();
-    var suffix = $('#suffix').val();
+    var suffix = $('#suffix').val().toLowerCase();
     var out1 = setNumbers(word);
     var out2 = alterCaps(out1);
     var output = out2 + getASCII(suffix);
@@ -40,7 +40,9 @@ function alterCaps(word){
 function setNumbers(word){
     let numbered = word.slice();
     for (var i = 0; i < word.length; i++) {
-        if (word.charAt(i) === 'L' || word.charAt(i) === 'l'){
+        if (word.charAt(i) === 'O' || word.charAt(i) === 'o'){
+            numbered = setCharAt(numbered,i,'0')
+        } else if (word.charAt(i) === 'L' || word.charAt(i) === 'l'){
             numbered = setCharAt(numbered,i,'1')
         } else if (word.charAt(i) === 'Z' || word.charAt(i) === 'z'){
             numbered = setCharAt(numbered,i,'2')
